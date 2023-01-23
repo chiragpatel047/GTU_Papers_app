@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="universal_blue">#5E78FF</color>
+    <color name="main_background_color">#11131C</color>
+    <color name="main_text">#E1E1E1</color>
+    <color name="bottomSheetHandle">#454545</color>
+    <color name="card_background_color">#191E30</color>
+    <color name="icon_tint">#E1E1E1</color>
+    <color name="botton_back_color">#33E1E1E1</color>
+    <color name="botton_back_ripple_color">#80E1E1E1</color>
+
+    <color name="greeen_botton_back_color">#3375FD7B</color>
+
+    <color name="red_botton_back_color">#33FF5E5E</color>
+
+</resources>

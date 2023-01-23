@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/card_background_color"
+    android:paddingBottom="30dp">
+
+    <TextView
+        android:id="@+id/report_indicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Report a problem"
+        android:textColor="@color/icon_tint"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/report_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/main_text"
+        android:ems="10"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="start|top"
+        android:hint="describe your issue here..."
+        android:inputType="textMultiLine"
+        android:textColor="@color/icon_tint"
+        android:textColorHint="#B3B3B3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report_indicator" />
+
+    <TextView
+        android:id="@+id/report_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_submit"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Submit"
+        android:textColor="@color/icon_tint"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="@+id/report_editText"
+        app:layout_constraintStart_toStartOf="@+id/report_editText"
+        app:layout_constraintTop_toBottomOf="@+id/report_editText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
