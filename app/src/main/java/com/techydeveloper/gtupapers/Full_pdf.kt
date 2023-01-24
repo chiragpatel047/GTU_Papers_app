@@ -19,6 +19,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import com.github.barteksc.pdfviewer.PDFView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.OnUserEarnedRewardListener
+import com.google.android.gms.ads.rewarded.RewardItem
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -37,6 +44,10 @@ class Full_pdf : AppCompatActivity() {
     lateinit var paperName : String
     lateinit var paperLink : String
 
+    private var mRewardedAd: RewardedAd? = null
+
+    lateinit var mAdView : AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,6 +65,23 @@ class Full_pdf : AppCompatActivity() {
         paperLink = intent.getStringExtra("PAPER_LINK")!!
 
         year_name.text = paperName
+
+        val adView = AdView(this)
+        adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
+
+        mAdView = findViewById(R.id.adView)
+        val bannerAdRequest = AdRequest.Builder().build()
+        mAdView.loadAd(bannerAdRequest)
+
+        var adRequest = AdRequest.Builder().build()
+        RewardedAd.load(this,"ca-app-pub-3940256099942544/5224354917", adRequest, object : RewardedAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                mRewardedAd = null
+            }
+            override fun onAdLoaded(rewardedAd: RewardedAd) {
+                mRewardedAd = rewardedAd
+            }
+        })
 
         storage = Firebase.storage
 
@@ -98,7 +126,24 @@ class Full_pdf : AppCompatActivity() {
                     )
                 }
             }else{
-                downloadPDF()
+                if (mRewardedAd != null) {
+                    mRewardedAd?.show(this, OnUserEarnedRewardListener() {
+
+                        Toast.makeText(this,"Downloading",Toast.LENGTH_LONG).show()
+                        downloadPDF()
+
+                        fun onUserEarnedReward(rewardItem: RewardItem) {
+                            var rewardAmount = rewardItem.amount
+                            var rewardType = rewardItem.type
+                        }
+                    })
+
+                }else{
+
+                    Toast.makeText(this,"Downloading",Toast.LENGTH_LONG).show()
+                    downloadPDF()
+
+                }
             }
         }
     }

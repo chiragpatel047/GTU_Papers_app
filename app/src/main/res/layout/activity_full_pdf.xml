@@ -41,7 +41,7 @@
         android:id="@+id/pdfView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -57,9 +57,23 @@
         android:background="@drawable/btn_back"
         android:elevation="5dp"
         android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/pdfView"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/download"
         app:tint="@color/white" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
