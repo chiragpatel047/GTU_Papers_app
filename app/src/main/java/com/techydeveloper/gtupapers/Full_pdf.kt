@@ -67,14 +67,15 @@ class Full_pdf : AppCompatActivity() {
         year_name.text = paperName
 
         val adView = AdView(this)
-        adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
+        adView.adUnitId = "ca-app-pub-6633507436089608/5751184818"
 
         mAdView = findViewById(R.id.adView)
         val bannerAdRequest = AdRequest.Builder().build()
+        
         mAdView.loadAd(bannerAdRequest)
 
         var adRequest = AdRequest.Builder().build()
-        RewardedAd.load(this,"ca-app-pub-3940256099942544/5224354917", adRequest, object : RewardedAdLoadCallback() {
+        RewardedAd.load(this,"ca-app-pub-6633507436089608/9367281607", adRequest, object : RewardedAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mRewardedAd = null
             }
